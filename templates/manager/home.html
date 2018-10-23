@@ -14,27 +14,69 @@
 </div>
 <table border="1px">
     <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-        <td>7</td>
-        <td>8</td>
-        <td>9</td>
+        <td>account</td>
+        <td>symbol</td>
+        <td>currency</td>
+        <td>underlying</td>
+        <td>quoteCurrency</td>
+        <td>commission</td>
+        <td>initMarginReq</td>
+        <td>maintMarginReq</td>
+        <td>riskLimit</td>
+        <td>leverage</td>
+        <td>crossMargin</td>
+        <td>deleveragePercentile</td>
+        <td>rebalancedPnl</td>
+        <td>prevRealisedPnl</td>
+        <td>currentQty</td>
+        <td>currentCost</td>
+        <td>currentComm</td>
+        <td>realisedCost</td>
+        <td>unrealisedCost</td>
+        <td>grossOpenCost</td>
+        <td>grossOpenPremium</td>
+        <td>markPrice</td>
+        <td>markValue</td>
+        <td>homeNotional</td>
+        <td>foreignNotional</td>
+        <td>realisedPnl</td>
+        <td>unrealisedGrossPnl</td>
+        <td>unrealisedPnl</td>
+        <td>liquidationPrice</td>
+        <td>bankruptPrice</td>
     </tr>
     {% for item in list %}
     <tr>
-        <td>{{ item.id }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.name }}</td>
+        <td>{{ item.account}}</td>
+        <td>{{ item.symbol}}</td>
+        <td>{{ item.currency}}</td>
+        <td>{{ item.underlying}}</td>
+        <td>{{ item.quoteCurrency}}</td>
+        <td>{{ item.commission}}</td>
+        <td>{{ item.initMarginReq}}</td>
+        <td>{{ item.maintMarginReq}}</td>
+        <td>{{ item.riskLimit}}</td>
+        <td>{{ item.leverage}}</td>
+        <td>{{ item.crossMargin}}</td>
+        <td>{{ item.deleveragePercentile}}</td>
+        <td>{{ item.rebalancedPnl}}</td>
+        <td>{{ item.prevRealisedPnl}}</td>
+        <td>{{ item.currentQty}}</td>
+        <td>{{ item.currentCost}}</td>
+        <td>{{ item.currentComm}}</td>
+        <td>{{ item.realisedCost}}</td>
+        <td>{{ item.unrealisedCost}}</td>
+        <td>{{ item.grossOpenCost}}</td>
+        <td>{{ item.grossOpenPremium}}</td>
+        <td>{{ item.markPrice}}</td>
+        <td>{{ item.markValue}}</td>
+        <td>{{ item.homeNotional}}</td>
+        <td>{{ item.foreignNotional}}</td>
+        <td>{{ item.realisedPnl}}</td>
+        <td>{{ item.unrealisedGrossPnl}}</td>
+        <td>{{ item.unrealisedPnl}}</td>
+        <td>{{ item.liquidationPrice}}</td>
+        <td>{{ item.bankruptPrice}}</td>
     </tr>
     {% endfor %}
 

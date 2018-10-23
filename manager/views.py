@@ -5,7 +5,7 @@ from manager.utils import strategymanager,bitmex
 def home(request):
     context = {}
     list = []
-    name = request.GET['strategy_name']
+    name = request.GET.get('strategy_name')
     strategymanager.init()
     if name != None:
         for strategy in strategymanager.strategys:
@@ -13,8 +13,10 @@ def home(request):
                 for account in strategy.get('accounts'):
                     # client = bitmex.bitmex(test=False, api_key=account.get('key'), api_secret=account.get('secret'))
                     client = bitmex.bitmex(test=True, api_key=account.get('key'), api_secret=account.get('secret'))
-                    positionresult = client.position().result()
-                    list.extend(positionresult)
+                    positionresult = client.Position.Position_get().result()
+                    if (positionresult != None):
+                        list.extend(positionresult[0])
     context['list'] = list
+    print(list)
 
     return render(request, 'manager/home.html', context)
