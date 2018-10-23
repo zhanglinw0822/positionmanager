@@ -10,9 +10,11 @@ def home(request):
     if name != None:
         for strategy in strategymanager.strategys:
             if (name==strategy['name']):
-                client = bitmex.bitmex(test=True, api_key=strategy.get('key'), api_secret=strategy.get('secret'))
-                positionresult = client.position().result()
-                list.extend(positionresult)
+                for account in strategy.get('accounts'):
+                    # client = bitmex.bitmex(test=False, api_key=account.get('key'), api_secret=account.get('secret'))
+                    client = bitmex.bitmex(test=True, api_key=account.get('key'), api_secret=account.get('secret'))
+                    positionresult = client.position().result()
+                    list.extend(positionresult)
     context['list'] = list
 
     return render(request, 'manager/home.html', context)

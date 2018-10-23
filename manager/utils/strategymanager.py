@@ -22,17 +22,33 @@ def init():
 
         for strategy in strategyList:
             path = None
-            key = None
-            secret = None
             name = None
+            accounts = None
             for child in strategy:
                 # print(child.tag, child.text)
                 if child.tag == 'path':
                     path = child.text
-                if child.tag == 'key':
-                    key = child.text
-                if child.tag == 'secret':
-                    secret = child.text
                 if child.tag == 'name':
                     name = child.text
-            strategys.append({'path': path, 'key': key, 'secret': secret, 'name': name})
+                if child.tag == 'accounts':
+                    accounts = parse_account(child)
+
+            strategys.append({'path': path, 'name': name, 'accounts': accounts})
+
+def parse_account(accountsElement):
+    accountList = accountsElement.findall("account");
+    accounts = []
+    for account in accountList:
+        name = None
+        key = None
+        secret = None
+        for child in account:
+            # print(child.tag, child.text)
+            if child.tag == 'key':
+                key = child.text.strip()
+            if child.tag == 'name':
+                name = child.text
+            if child.tag == 'secret':
+                secret = child.text.strip()
+        accounts.append({'name': name, 'key': key, 'secret': secret})
+    return accounts
